@@ -1,0 +1,19 @@
+.more_movies_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 34px;
+
+    flex-direction: column;
+}
+
+.more_movies_container div {
+    width: 467px;
+    height: 260px;
+    -webkit-box-shadow: 15px 4px 29px 0px rgba(255,255,255,0.43);
+    -moz-box-shadow: 15px 4px 29px 0px rgba(255,255,255,0.43);
+    box-shadow: 15px 4px 29px 0px rgba(255,255,255,0.43);
+    overflow: hidden;
+}
+
