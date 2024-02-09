@@ -1,11 +1,9 @@
 import {useSuspenseQuery} from "@tanstack/react-query";
 import {queryOptions} from "@tanstack/react-query";
 import {
-    KEY_GET_CAST_BY_MOVIE_ID,
     KEY_GET_MOVIE_BY_ID,
-    KEY_GET_RECOMMENDATION_BY_MOVIE_ID
 } from "../../services/const.ts";
-import {getCastByMovieId, getMovieById, getRecommendationByMovieId} from "../../services/movies.ts";
+import {getMovieById} from "../../services/movies.ts";
 import {useParams} from "@tanstack/react-router";
 import styles from './details.module.css';
 
@@ -13,21 +11,25 @@ const movieDetailsQueryOptions = (movieID: string) => queryOptions({
     queryKey: KEY_GET_MOVIE_BY_ID(movieID),
     queryFn: () => getMovieById(movieID),
 });
-const movieCastQueryOptions = (movieID: string) => queryOptions({
-    queryKey: KEY_GET_CAST_BY_MOVIE_ID(movieID),
-    queryFn: () => getCastByMovieId(movieID),
-});
-const movieRecommendationsQueryOptions = (movieID: string) => queryOptions({
-    queryKey: KEY_GET_RECOMMENDATION_BY_MOVIE_ID(movieID),
-    queryFn: () => getRecommendationByMovieId(movieID),
-});
+// const movieCastQueryOptions = (movieID: string) => queryOptions({
+//     queryKey: KEY_GET_CAST_BY_MOVIE_ID(movieID),
+//     queryFn: () => getCastByMovieId(movieID),
+// });
+// const movieRecommendationsQueryOptions = (movieID: string) => queryOptions({
+//     queryKey: KEY_GET_RECOMMENDATION_BY_MOVIE_ID(movieID),
+//     queryFn: () => getRecommendationByMovieId(movieID),
+// });
 
 export const DetailsPage = () => {
-    const {movieID} = useParams({strict: false})
+    const params = useParams({strict: false})
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    const movieID = params.movieID
 
     const movieDetail = useSuspenseQuery(movieDetailsQueryOptions(movieID));
-    const cast = useSuspenseQuery(movieCastQueryOptions(movieID));
-    const recommendations = useSuspenseQuery(movieRecommendationsQueryOptions(movieID));
+    // const cast = useSuspenseQuery(movieCastQueryOptions(movieID));
+    // const recommendations = useSuspenseQuery(movieRecommendationsQueryOptions(movieID));
 
     const getGenres = () => {
         const genres = movieDetail.data.data.genres;
