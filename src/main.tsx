@@ -2,6 +2,7 @@ import {StrictMode} from 'react'
 import ReactDOM from "react-dom/client";
 import {createRouter, RouterProvider} from "@tanstack/react-router";
 import {routeTree} from "./routeTree.gen.ts";
+import {ReactQueryProvider} from "./providers/reactQuery.tsx";
 
 const router = createRouter({ routeTree })
 
@@ -16,7 +17,9 @@ if (!rootElement.innerHTML) {
     const root = ReactDOM.createRoot(rootElement)
     root.render(
         <StrictMode>
-            <RouterProvider router={router} />
+            <ReactQueryProvider>
+                <RouterProvider router={router} />
+            </ReactQueryProvider>
         </StrictMode>,
     )
 }
