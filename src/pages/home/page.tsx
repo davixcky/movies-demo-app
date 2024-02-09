@@ -30,7 +30,7 @@ export const HomePage = () => {
 
             <MoviesGrid movies={movies} genres={genres}/>
 
-            <p>More like this</p>
+            <p className={styles.more_movies_title}>More like this</p>
 
             <div className={styles.more_movies_container}>
                 {otherMovies.map((movie) => <div><Movie movie={movie} genres={genres} /></div>)}

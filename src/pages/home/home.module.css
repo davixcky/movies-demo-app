@@ -17,3 +17,11 @@
     overflow: hidden;
 }
 
+
+.more_movies_title {
+    margin-top: 120px;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
