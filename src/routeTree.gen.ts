@@ -10,34 +10,34 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as DetailsMovieIDImport } from './routes/details.$movieID'
+import { Route as rootRoute } from './routes/__root';
+import { Route as IndexImport } from './routes/index';
+import { Route as DetailsMovieIDImport } from './routes/details.$movieID';
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const DetailsMovieIDRoute = DetailsMovieIDImport.update({
   path: '/details/$movieID',
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
     '/details/$movieID': {
-      preLoaderRoute: typeof DetailsMovieIDImport
-      parentRoute: typeof rootRoute
-    }
+      preLoaderRoute: typeof DetailsMovieIDImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
@@ -46,6 +46,6 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
   DetailsMovieIDRoute,
-])
+]);
 
 /* prettier-ignore-end */

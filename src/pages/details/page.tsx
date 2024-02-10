@@ -61,6 +61,7 @@ export const DetailsPage = ({ movieID }: DetailsPageProps) => {
   const directors = cast.data.data.crew.filter(crew => crew.job === 'Director');
   const writers = cast.data.data.crew.filter(crew => crew.job === 'Writer');
   const mainCast = cast.data.data.cast.slice(0, 5);
+  const runtime = movieDetail.data.data.runtime;
 
   return (
     <div className={styles.container}>
@@ -71,7 +72,8 @@ export const DetailsPage = ({ movieID }: DetailsPageProps) => {
         <div className={styles.details}>
           <p className={styles.movie_title}>{movieDetail.data.data.title}</p>
           <p className={styles.movie_duration}>
-            {movieDetail.data.data.release_date.slice(0, 4)} - 1h 45m
+            {movieDetail.data.data.release_date.slice(0, 4)} -{' '}
+            {Math.floor(runtime / 60)}h {runtime % 60}m
           </p>
           {getGenres()}
         </div>
