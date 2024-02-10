@@ -1,84 +1,85 @@
-
-
 .container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    padding: 8px;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 8px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
-
 .container img {
-    display: none;
-    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.35), rgba(0,0,0,0));
-    background: rgb(54,0,242);
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 240px;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  display: none;
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+  background: rgb(54, 0, 242);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 240px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .container .backdrop_image {
-    display: block;
-    max-width: 100%;
-    mask-image: linear-gradient(to left, rgb(0, 0, 0), rgba(0,0,0,0));
+  display: block;
+  max-width: 100%;
+  mask-image: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
 
-    /*mask-image: none;*/
+  /*mask-image: none;*/
 }
 
 .container .poster_image {
-    display: none;
+  display: none;
 }
 
-.container:hover  .backdrop_image {
-    display: none;
+.container:hover .backdrop_image {
+  display: none;
 }
 
 .container:hover .poster_image {
-    display: block;
+  display: block;
 }
 
 .title {
-    font-size: 1.5rem;
-    color: white;
+  font-size: 1.5rem;
+  color: white;
 }
 
 .movie_genre_container {
-    background: rgb(143,143,143);
-    background: linear-gradient(to right, rgba(143,143,143,0.2847732843137255) 4%, rgba(192,191,196,0.13911502100840334) 100%);
-    padding: 4px 2px;
-    height: 30px;
-    max-height: 30px;
+  background: rgb(143, 143, 143);
+  background: linear-gradient(
+    to right,
+    rgba(143, 143, 143, 0.2847732843137255) 4%,
+    rgba(192, 191, 196, 0.13911502100840334) 100%
+  );
+  padding: 4px 2px;
+  height: 30px;
+  max-height: 30px;
 }
 
 .movie_genre {
-    color: white;
-    margin-right: 8px;
-    font-size: 12px;
+  color: white;
+  margin-right: 8px;
+  font-size: 12px;
 }
 
 .container:hover .movie_genre_container {
-    display: none;
+  display: none;
 }
 
 .description {
-    display: none;
-    color: white;
-    font-size: 14px;
-    max-width: 230px;
-    word-break: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 60%;
+  display: none;
+  color: white;
+  font-size: 14px;
+  max-width: 230px;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 60%;
 }
 
 .container:hover .description {
-    display: block;
+  display: block;
 }
