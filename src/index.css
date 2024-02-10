@@ -1,18 +1,19 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-    background: rgb(77,54,153);
-    background: radial-gradient(circle, rgba(77,54,153,1) 26%, rgba(0,0,0,1) 94%);
+    margin: 0;
+    padding: 0;
+    background: rgb(77, 54, 153);
+    background: radial-gradient(circle, rgba(77, 54, 153, 1) 26%, rgba(0, 0, 0, 1) 94%);
+    background-attachment: fixed;
     height: 100vh;
     width: 100vw;
+    scroll-behavior: smooth;
 }
 
 html {
@@ -21,8 +22,8 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; // not neccesary
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

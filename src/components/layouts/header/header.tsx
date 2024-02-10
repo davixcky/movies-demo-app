@@ -1,8 +1,10 @@
 
+import styles from './header.module.css';
+
 export const Header = () => {
     return (
-        <main className="p-2">
-            <h1>Header</h1>
+        <main className={styles.header}>
+            <h1>Movie App</h1>
         </main>
     );
 }

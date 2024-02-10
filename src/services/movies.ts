@@ -1,5 +1,5 @@
 import {httpClient} from "./httpService.ts";
-import {GetGenresResponse, GetMoviesResponse, Movie} from "./moviesType.ts";
+import {GetCastAndCrewResponse, GetGenresResponse, GetMoviesResponse, Movie} from "./moviesType.ts";
 
 
 export const getTrendingMovies = async () => {
@@ -11,11 +11,11 @@ export const getGenres = async () => {
 }
 
 export const getMovieById = async (id: string) => {
-    return httpClient.get<Movie>(`/3/movie/${id}`);
+    return httpClient.get<Movie>(`/3/movie/${id}?append_to_response=videos`);
 }
 
 export const getCastByMovieId = async (id: string) => {
-    return httpClient.get(`/3/movie/${id}/credits`);
+    return httpClient.get<GetCastAndCrewResponse>(`/3/movie/${id}/credits`);
 }
 
 export const getRecommendationByMovieId = async (id: string) => {

@@ -1,0 +1,18 @@
+
+body {
+    --header-height: 60px;
+}
+
+.header {
+    width: 100%;
+    height: var(--header-height);
+    background-color:rgba(77, 54, 153, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    color: white;
+    top: 0;
+    z-index: 100;
+    left: 0;
+}

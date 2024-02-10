@@ -82,7 +82,3 @@
 .container:hover .description {
     display: block;
 }
-
-.container:hover {
-    scale: 1;
-}

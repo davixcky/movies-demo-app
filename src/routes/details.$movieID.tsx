@@ -1,35 +1,17 @@
 import {createFileRoute} from '@tanstack/react-router';
-import {QueryClient, queryOptions} from "@tanstack/react-query";
-import {
-    KEY_GET_CAST_BY_MOVIE_ID,
-    KEY_GET_MOVIE_BY_ID, KEY_GET_RECOMMENDATION_BY_MOVIE_ID,
-} from "../services/const.ts";
-import {
-    getCastByMovieId,
-    getMovieById,
-    getRecommendationByMovieId,
-} from "../services/movies.ts";
+import {QueryClient} from "@tanstack/react-query";
 import {Suspense} from "react";
 import {DetailsPage} from "../pages/details/page.tsx";
-
-
-const movieDetailsQueryOptions = (movieID: string) => queryOptions({
-    queryKey: KEY_GET_MOVIE_BY_ID(movieID),
-    queryFn: () => getMovieById(movieID),
-});
-const movieCastQueryOptions = (movieID: string) => queryOptions({
-    queryKey: KEY_GET_CAST_BY_MOVIE_ID(movieID),
-    queryFn: () => getCastByMovieId(movieID),
-});
-const movieRecommendationsQueryOptions = (movieID: string) => queryOptions({
-    queryKey: KEY_GET_RECOMMENDATION_BY_MOVIE_ID(movieID),
-    queryFn: () => getRecommendationByMovieId(movieID),
-});
+import {
+    movieCastQueryOptions,
+    movieDetailsQueryOptions,
+    movieRecommendationsQueryOptions
+} from "../services/query/options.ts";
 
 const queryClient = new QueryClient();
 
 export const Route = createFileRoute('/details/$movieID')({
-    component: () => <Suspense fallback={<h1>loading</h1>}><DetailsPage/></Suspense>,
+    component: PageWrapper,
     loader: async ({params}) => {
         const movieID = params.movieID;
 
@@ -54,4 +36,12 @@ export const Route = createFileRoute('/details/$movieID')({
         return <h1>error here</h1>
     }
 });
+
+function PageWrapper() {
+    const {movieID} = Route.useParams();
+
+    return (
+        <Suspense fallback={<h1>loading</h1>}><DetailsPage movieID={movieID}/></Suspense>
+    )
+}
 

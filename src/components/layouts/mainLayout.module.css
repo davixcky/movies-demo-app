@@ -8,6 +8,7 @@
 }
 
 .innerContainer {
+    margin-top: calc(var(--header-height) + 32px);
     display: flex;
     justify-content: center;
     align-items: center;
