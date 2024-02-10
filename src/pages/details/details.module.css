@@ -34,6 +34,10 @@
   display: block;
 }
 
+.details_container:hover .background_image_container  {
+  filter: blur(0);
+}
+
 .details_container:hover .background_image_container img {
   display: none;
 }
@@ -44,7 +48,6 @@
 
 .details_container:hover .background_image_container div {
   display: block;
-  filter: blur(0px);
 }
 
 .details {
@@ -91,7 +94,8 @@
   max-width: 60%;
 }
 
-.extra_details p {
+.extra_details {
+  margin-top: 30px;
 }
 
 .recommendations {

@@ -7,6 +7,8 @@ import {
   movieDetailsQueryOptions,
   movieRecommendationsQueryOptions,
 } from '../services/query/options.ts';
+import {Error} from "../components/features/error/error.tsx";
+import {Loading} from "../components/primitives/loading.tsx";
 
 const queryClient = new QueryClient();
 
@@ -27,13 +29,14 @@ export const Route = createFileRoute('/details/$movieID')({
 
     return { movieDetailsData, creditsData, recommendationsData };
   },
-  onError: error => {
-    console.log(error.message);
-    return <h1>{error.message}</h1>;
-  },
   errorComponent: error => {
-    console.log(error);
-    return <h1>error here</h1>;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    if ((error as unknown).error.response.status === 404) {
+      return <Error message='Movie not found'/>
+    }
+
+    return <Error message='Something unexpected happened. Try again or contact support'/>
   },
 });
 
@@ -41,7 +44,7 @@ function PageWrapper() {
   const { movieID } = Route.useParams();
 
   return (
-    <Suspense fallback={<h1>loading</h1>}>
+    <Suspense fallback={<Loading />}>
       <DetailsPage movieID={movieID} />
     </Suspense>
   );

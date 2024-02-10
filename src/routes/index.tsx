@@ -1,25 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { QueryClient, queryOptions } from '@tanstack/react-query';
-import { KEY_LIST_GENRES, KEY_TRENDING_MOVIES } from '../services/const.ts';
-import { getGenres, getTrendingMovies } from '../services/movies.ts';
+import { QueryClient } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { HomePage } from '../pages/home/page.tsx';
+import {Loading} from "../components/primitives/loading.tsx";
+import {genresListQueryOptions, trendingMoviesQueryOptions} from "../services/query/options.ts";
+import {Error} from "../components/features/error/error.tsx";
 
 const queryClient = new QueryClient();
 
-const trendingMoviesQueryOptions = queryOptions({
-  queryKey: KEY_TRENDING_MOVIES,
-  queryFn: getTrendingMovies,
-});
-
-const genresListQueryOptions = queryOptions({
-  queryKey: KEY_LIST_GENRES,
-  queryFn: getGenres,
-});
-
 export const Route = createFileRoute('/')({
   component: () => (
-    <Suspense fallback={<h1>loading</h1>}>
+    <Suspense fallback={<Loading />}>
       <HomePage />
     </Suspense>
   ),
@@ -35,12 +26,7 @@ export const Route = createFileRoute('/')({
 
     return { trendingMoviesData, genresListData };
   },
-  onError: error => {
-    console.log(error.message);
-    return <h1>{error.message}</h1>;
-  },
-  errorComponent: error => {
-    console.log(error);
-    return <h1>error here</h1>;
+  errorComponent: () => {
+    return <Error message='Unexpected error' />;
   },
 });
