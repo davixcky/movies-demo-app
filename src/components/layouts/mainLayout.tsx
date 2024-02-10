@@ -1,7 +1,7 @@
 import { Header } from './header';
 
 import styles from './mainLayout.module.css';
-import React from "react";
+import React from 'react';
 
 type MainLayoutProps = {
   children: React.ReactNode;

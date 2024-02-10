@@ -2,9 +2,12 @@ import { createFileRoute } from '@tanstack/react-router';
 import { QueryClient } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { HomePage } from '../pages/home/page.tsx';
-import {Loading} from "../components/primitives/loading.tsx";
-import {genresListQueryOptions, trendingMoviesQueryOptions} from "../services/query/options.ts";
-import {Error} from "../components/features/error/error.tsx";
+import { Loading } from '../components/primitives/loading.tsx';
+import {
+  genresListQueryOptions,
+  trendingMoviesQueryOptions,
+} from '../services/query/options.ts';
+import { Error } from '../components/features/error/error.tsx';
 
 const queryClient = new QueryClient();
 
@@ -27,6 +30,6 @@ export const Route = createFileRoute('/')({
     return { trendingMoviesData, genresListData };
   },
   errorComponent: () => {
-    return <Error message='Unexpected error' />;
+    return <Error message="Unexpected error" />;
   },
 });

@@ -5,6 +5,7 @@ import { Button } from '../../components/primitives/button.tsx';
 import { useRouter } from '@tanstack/react-router';
 import { MovieList } from '../../components/features/movieList/movieList.tsx';
 import {
+  genresListQueryOptions,
   movieCastQueryOptions,
   movieDetailsQueryOptions,
   movieRecommendationsQueryOptions,
@@ -22,6 +23,7 @@ export const DetailsPage = ({ movieID }: DetailsPageProps) => {
 
   const movieDetail = useSuspenseQuery(movieDetailsQueryOptions(movieID));
   const cast = useSuspenseQuery(movieCastQueryOptions(movieID));
+  const genres = useSuspenseQuery(genresListQueryOptions);
   const recommendations = useSuspenseQuery(
     movieRecommendationsQueryOptions(movieID),
   );
@@ -101,7 +103,10 @@ export const DetailsPage = ({ movieID }: DetailsPageProps) => {
           <div className={styles.recommendations}>
             <p className={styles.recommendations__title}>Recommendations</p>
 
-            <MovieList movies={recommendations.data.data.results} />
+            <MovieList
+              movies={recommendations.data.data.results}
+              genres={genres.data.data.genres}
+            />
           </div>
         )}
       </div>

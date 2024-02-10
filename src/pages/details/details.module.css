@@ -34,7 +34,7 @@
   display: block;
 }
 
-.details_container:hover .background_image_container  {
+.details_container:hover .background_image_container {
   filter: blur(0);
 }
 

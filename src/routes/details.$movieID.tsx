@@ -3,12 +3,13 @@ import { QueryClient } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { DetailsPage } from '../pages/details/page.tsx';
 import {
+  genresListQueryOptions,
   movieCastQueryOptions,
   movieDetailsQueryOptions,
   movieRecommendationsQueryOptions,
 } from '../services/query/options.ts';
-import {Error} from "../components/features/error/error.tsx";
-import {Loading} from "../components/primitives/loading.tsx";
+import { Error } from '../components/features/error/error.tsx';
+import { Loading } from '../components/primitives/loading.tsx';
 
 const queryClient = new QueryClient();
 
@@ -24,19 +25,22 @@ export const Route = createFileRoute('/details/$movieID')({
     const recommendations = queryClient.ensureQueryData(
       movieRecommendationsQueryOptions(movieID),
     );
-    const [movieDetailsData, creditsData, recommendationsData] =
-      await Promise.all([movieDetails, credits, recommendations]);
+    const genres = queryClient.ensureQueryData(genresListQueryOptions);
+    const [movieDetailsData, creditsData, recommendationsData, genresData] =
+      await Promise.all([movieDetails, credits, recommendations, genres]);
 
-    return { movieDetailsData, creditsData, recommendationsData };
+    return { movieDetailsData, creditsData, recommendationsData, genresData };
   },
   errorComponent: error => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     if ((error as unknown).error.response.status === 404) {
-      return <Error message='Movie not found'/>
+      return <Error message="Movie not found" />;
     }
 
-    return <Error message='Something unexpected happened. Try again or contact support'/>
+    return (
+      <Error message="Something unexpected happened. Try again or contact support" />
+    );
   },
 });
 

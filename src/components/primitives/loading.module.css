@@ -1,34 +1,33 @@
-
 .wrapper {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: #fff;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
 }
 
 .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
 }
 
 .simple-loader {
-    width: 100%;
-    height: 100%;
-    border: 10px solid #E1F5FE;
-    border-radius: 100%;
-    border-top: 10px solid #29B6F6;
-    animation: loader 1s linear infinite;
+  width: 100%;
+  height: 100%;
+  border: 10px solid #e1f5fe;
+  border-radius: 100%;
+  border-top: 10px solid #29b6f6;
+  animation: loader 1s linear infinite;
 }
 
 @keyframes loader {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
